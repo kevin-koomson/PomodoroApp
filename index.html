@@ -3,12 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!--<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">-->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
   
   <title>Pomodoro Timer</title>
 </head>
 <body>
- 
+  <h2 class="heading">pomodoro</h2>
+  <div class="container">
+    <div class="timer-modes">
+      <button class="pomodoro button active">pomodoro</button>
+      <button class="short-break button">short break</button>
+      <button class="long-break button">long break</button>
+    </div>
+    <div class="clock-face">
+      <div class="clock-face-inner">
+        <div class="progress-bar">
+          <div class="timer">
+            <div id="timer-digits"><span id="minutes">25</span>:<span id="seconds">00</span></div>
+            <div class="pauser">PAUSE</div>
+            <div class="starter-restarter"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="settings-icon"><a><img src="assets/icon-settings.svg" alt="settings"></a></div>
+  </div>
 </body>
 </html>

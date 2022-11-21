@@ -1,0 +1,107 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap');
+body{
+    background-color: #1E213F;
+    color: #D7E0FF;
+
+}
+.heading{
+    text-align: center;
+    margin-bottom: 55px;
+}
+.timer-modes{
+    width: 373px;
+    height: 63px;
+    border-radius: 31.5px;
+    background: #161932;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 45px;
+}
+.button{
+    height: 48px;
+    width: 120px;
+    border-radius: 26.5px;
+    font-weight: 700;
+    background: #161932;
+    color: #D7E0FF;
+    border: none;
+}
+button.active{
+    background: #F87070;
+}
+.container{
+    height: 100%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: auto;
+    margin-right: auto;
+}
+.clock-face{
+    width: 410px;
+    height: 410px;
+    border-radius: 50%;
+    
+    background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
+    margin-bottom: 45px
+}
+.clock-face-inner{
+    height: 366px;
+    width: 366px;
+    border-radius: 50%;
+    background: #161932;
+    margin: 22px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.progress-bar{
+    background: #F87070;
+    height: 339px;
+    width: 339px;
+    border-radius: 50%;
+    margin: 13.5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.timer{
+    width: 325px;
+    height: 325px;
+    background: #161932;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#timer-digits{
+    height: 101px;
+    width: 233px;
+    font-size: 100px;
+    margin-top: 64px;
+    font-family: Kumbh Sans;
+    font-weight: 700;
+    line-height: 124px;
+    letter-spacing: -5px;
+    text-align: center;
+}
+.pauser, .starter-restarter{
+    height: 16px;
+    width: 112px;
+    
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 15px;
+}
+@media screen and (max-width: 1440px){
+    
+}
