@@ -2,6 +2,12 @@
     box-sizing: border-box;
     font-family: 'Kumbh Sans', sans-serif;
 }
+:root{
+    --orange-theme: #F87070;
+    --cyan-theme: #70F3F8;
+    --purple-theme: #D881F8;
+
+}
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap');
 body{
     background-color: #1E213F;
@@ -22,17 +28,33 @@ body{
     align-items: center;
     margin-bottom: 45px;
 }
-.button{
+a.button{
+    display: flex;
     height: 48px;
     width: 120px;
     border-radius: 26.5px;
     font-weight: 700;
     background: #161932;
-    color: #D7E0FF;
+    color: #7f8bb7;
     border: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
 }
-button.active{
-    background: #F87070;
+a.button.active{
+    background: var(--orange-theme);
+    color: #D7E0FF;
+}
+a.button:hover{
+    color: #D7E0FF;
+}
+
+.pauser a{
+    text-decoration: none;
+    color: #D7E0FF;
+}
+.pauser a:hover{
+    color: var(--orange-theme);
 }
 .container{
     height: 100%;
@@ -63,7 +85,7 @@ button.active{
     display: flex;
 }
 .progress-bar{
-    background: #F87070;
+    background: var(--orange-theme);
     height: 339px;
     width: 339px;
     border-radius: 50%;
