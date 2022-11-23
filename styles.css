@@ -27,6 +27,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 45px;
+    z-index: 1;
 }
 a.button{
     display: flex;
@@ -48,12 +49,24 @@ a.button.active{
 a.button:hover{
     color: #D7E0FF;
 }
-
-.pauser a{
+.timer{
+    width: 325px;
+    height: 325px;
+    background: #161932;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.starter, .pauser, .restarter{
+    margin-bottom: 40px;
+}
+.pauser a, .starter a, .restarter a{
     text-decoration: none;
     color: #D7E0FF;
 }
-.pauser a:hover{
+.pauser a:hover, .starter a:hover, .restarter a:hover{
     color: var(--orange-theme);
 }
 .container{
@@ -70,9 +83,11 @@ a.button:hover{
     width: 410px;
     height: 410px;
     border-radius: 50%;
-    
     background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
-    margin-bottom: 45px
+    margin-bottom: 45px;
+    box-shadow: 50px 50px 100px 0px #121530;
+    box-shadow: -50px -50px 100px 0px #272C5A;
+
 }
 .clock-face-inner{
     height: 366px;
@@ -85,7 +100,7 @@ a.button:hover{
     display: flex;
 }
 .progress-bar{
-    background: var(--orange-theme);
+    background: conic-gradient(var(--orange-theme) 360deg,#161932 0deg);
     height: 339px;
     width: 339px;
     border-radius: 50%;
@@ -94,16 +109,7 @@ a.button:hover{
     justify-content: center;
     display: flex;
 }
-.timer{
-    width: 325px;
-    height: 325px;
-    background: #161932;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
+
 #timer-digits{
     height: 101px;
     width: 233px;
@@ -115,7 +121,7 @@ a.button:hover{
     letter-spacing: -5px;
     text-align: center;
 }
-.pauser, .starter-restarter{
+.pauser, .starter, .restarter{
     height: 16px;
     width: 112px;
     
@@ -123,6 +129,9 @@ a.button:hover{
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 15px;
+}
+.hidden{
+    display: none;
 }
 @media screen and (max-width: 1440px){
     
