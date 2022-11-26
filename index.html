@@ -12,18 +12,21 @@
   <h2 class="heading">pomodoro</h2>
   <div class="container">
     <div class="timer-modes">
-      <a href="#" class="pomodoro button active">pomodoro</a>
-      <a href="#" class="short-break button">short break</a>
-      <a href="#" class="long-break button">long break</a>
+      <a href="#" class="pomodoro button active" id="pomodoro-button">pomodoro</a>
+      <a href="#" class="short-break button" id="short-break-mode-button">short break</a>
+      <a href="#" class="long-break button" id="long-break-mode-button">long break</a>
     </div>
     <div class="clock-face">
       <div class="clock-face-inner">
         <div class="progress-bar">
           <div class="timer">
             <div id="timer-digits"><span id="minutes">25</span>:<span id="seconds">00</span></div>
-            <div class="starter"><a href="#" class="link" id="start">START</a></div>
-            <div class="pauser hidden"><a href="#" class="link" id="pause">PAUSE</a></div>
-            <div class="restarter hidden"><a href="#" class="link" id="restart">RESTART</a></div>
+            <a href="#" class="link" id="start">START</a>
+            <a href="#" class="link hidden" id="pause">PAUSE</a>
+            <a href="#" class="link hidden" id="restart">RESTART</a>
+            <a href="#" class="link hidden" id="resume">RESUME</a>
+            <a href="#" class="link hidden" id="shortBreakStart">START</a>
+            <a href="#" class="link hidden" id="longBreakStart">START</a>
           </div>
         </div>
       </div>

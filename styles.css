@@ -59,16 +59,7 @@ a.button:hover{
     align-items: center;
     justify-content: space-around;
 }
-.starter, .pauser, .restarter{
-    margin-bottom: 40px;
-}
-.pauser a, .starter a, .restarter a{
-    text-decoration: none;
-    color: #D7E0FF;
-}
-.pauser a:hover, .starter a:hover, .restarter a:hover{
-    color: var(--orange-theme);
-}
+
 .container{
     height: 100%;
     width: 500px;
@@ -121,17 +112,26 @@ a.button:hover{
     letter-spacing: -5px;
     text-align: center;
 }
-.pauser, .starter, .restarter{
+.link{
     height: 16px;
-    width: 112px;
-    
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 15px;
+    text-decoration: none;
+    margin-bottom: 40px;
+    color: #D7E0FF;
+    margin-left: auto;
+    margin-right: auto;
+}
+.link:hover{
+    color: var(--orange-theme);
 }
 .hidden{
     display: none;
+}
+.unhide{
+    display: block;
 }
 @media screen and (max-width: 1440px){
     
