@@ -42,11 +42,6 @@ const timerData={
         seconds: 0
     },
     //methods
-    startMethod(){
-        starter.classList.add('hidden');
-        pauser.classList.remove('hidden');
-        countdown(this.minute,this.second);
-    },
     pauseMethod(){
         this.pausedValue.minutes=pageMinutes.innerHTML;
         this.pausedValue.seconds=pageSeconds.innerHTML;
@@ -64,19 +59,8 @@ const timerData={
             else timerData.shortBreakMode();
         }
     },
-    shortBreakMode(){
-        progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
-        this.mode.pomo=false;
-        this.mode.shortB=true;
-        document.getElementById('short-break-mode-button').classList.add('active');
-        document.getElementById('pomodoro-button').classList.remove('active');
-        pageMinutes.innerHTML=numDisp(this.shortBreak.minutes);
-        pageSeconds.innerHTML=numDisp(this.shortBreak.seconds);
-        shortBreakStart.classList.remove('hidden');
-        starter.classList.add('hidden');
-        restarter.classList.add('hidden');
-    },
     pomoMode(){
+        console.log('pomo mode');
         this.mode.pomo=true;
         this.mode.shortB=false;
         this.mode.longB=false;
@@ -87,10 +71,22 @@ const timerData={
          starter.classList.remove('hidden');
          shortBreakStart.classList.add('hidden');
          progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
-
-
+    },
+    shortBreakMode(){
+        console.log('short break mode');
+        this.mode.pomo=false;
+        this.mode.shortB=true;
+        this.mode.longB=false;
+        document.getElementById('short-break-mode-button').classList.add('active');
+        document.getElementById('pomodoro-button').classList.remove('active');
+        pageMinutes.innerHTML=numDisp(this.shortBreak.minutes); pageSeconds.innerHTML=numDisp(this.shortBreak.seconds);
+        progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
+        shortBreakStart.classList.remove('hidden');
+        starter.classList.add('hidden');
+        restarter.classList.add('hidden');
     },
     longBreakMode(){
+        console.log('long break mode');
         this.mode.pomo=false;
         this.mode.shortB=false;
         this.mode.longB=true;
@@ -98,11 +94,13 @@ const timerData={
         document.getElementById('short-break-mode-button').classList.remove('active');
         document.getElementById('long-break-mode-button').classList.add('active');
         pageMinutes.innerHTML=numDisp(this.longBreak.minutes); pageSeconds.innerHTML=numDisp(this.longBreak.seconds);
+        progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
         longBreakStart.classList.remove('hidden');
         starter.classList.add('hidden');
         restarter.classList.add('hidden');
     },
 }
+//first run after load
 pageMinutes.innerHTML=numDisp(timerData.minute);
 pageSeconds.innerHTML=numDisp(timerData.second);
 
@@ -110,7 +108,7 @@ pageSeconds.innerHTML=numDisp(timerData.second);
 
 //start eventhandler
 starter.addEventListener("click",()=>{
-    timerData.startMethod();
+    countdown(timerData.minute,timerData.second);
 });
 
 //restart event handler
@@ -132,13 +130,11 @@ resumer.addEventListener("click",()=>{
 //shortBreakStart event listener
 const shortBreakStart= document.getElementById('shortBreakStart');
 shortBreakStart.addEventListener("click",()=>{
-    shortBreakStart.classList.add('hidden');
-    pauser.classList.remove('hidden');
     countdown(timerData.shortBreak.minutes,timerData.shortBreak.seconds);
 });
 
 //longBreakStart event listener
-const longBreakStart= document.getElementById('shortBreakStart');
+const longBreakStart= document.getElementById('longBreakStart');
 longBreakStart.addEventListener("click",()=>{
     longBreakStart.classList.add('hidden');
     pauser.classList.remove('hidden');
@@ -158,47 +154,43 @@ function countdown(minutes,seconds){
     let secs=seconds;
     let rads=(min*60)+secs;
     let v=rads;
-
+    pauser.classList.remove('hidden'); 
+    starter.classList.add('hidden');
+    shortBreakStart.classList.add('hidden');
     let ticktock=setInterval(()=>{
             if(!timerData.canPause){
                 secs--; 
-                //updating study recods
-                if(timerData.mode.pomo){
-                    timerData.cycles.secondsStudied++;
-                    if (timerData.cycles.secondsStudied==60){
-                        timerData.cycles.minutesStudied++;
-                        timerData.cycles,seconds=0;
-                    }
-                }
-
                 v--; if(v<0)v=0;
+                if(min>=0) pageMinutes.innerHTML=numDisp(min);
+                if(secs>=0) pageSeconds.innerHTML=numDisp(secs);
+                if (rads>=0) progressBar.style.background=`conic-gradient(var(--orange-theme) ${(v/rads)*360}deg,#161932 0deg)`;
                 if(secs<0){
                     min--;
                     secs=59;
                     if(min<0){
-                        min=0;
-                        secs=0;
                         clearInterval(ticktock);
-                        if(timerData.cycles.minutesStudied%timerData.minute==0) timerData.cycles.sessionsDone++;
                         canPause=false;
                         pauser.classList.add('hidden');
                         if(timerData.mode.pomo){
-                            if (timerData.cycles.breakCount>2){
-                                timerData.cycles.breakCount=0;
-                                timerData.longBreakMode();    
+                            if(timerData.cycles.breakCount>2){
+                                timerData.mode.longB=true;
+                                timerData.longBreakMode();
                             }
-                            else {
-                                timerData.cycles.breakCount++;
+                            else{
+                                timerData.mode.shortB=true;
                                 timerData.shortBreakMode();
                             }
                         }
-                        else timerData.pomoMode();
+                        else if(timerData.mode.shortB){
+                           timerData.cycles.breakCount++;
+                           console.log(timerData.cycles.breakCount+'breakcount');
+                           timerData.pomoMode();
+                        }
+                        else if(timerData.mode.longB){
+                            timerData.pomoMode();
+                        }
                     }
                 }
-                pageMinutes.innerHTML=numDisp(min);
-                pageSeconds.innerHTML=numDisp(secs);
-                if (rads==-1) rads=0;
-                progressBar.style.background=`conic-gradient(var(--orange-theme) ${(v/rads)*360}deg,#161932 0deg)`;
             }
             else clearInterval(ticktock);
         },1000);
