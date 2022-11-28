@@ -9,29 +9,103 @@
   <title>Pomodoro Timer</title>
 </head>
 <body>
-  <h2 class="heading">pomodoro</h2>
-  <div class="container">
-    <div class="timer-modes">
-      <a href="#" class="pomodoro button active" id="pomodoro-button">pomodoro</a>
-      <a href="#" class="short-break button" id="short-break-mode-button">short break</a>
-      <a href="#" class="long-break button" id="long-break-mode-button">long break</a>
-    </div>
-    <div class="clock-face">
-      <div class="clock-face-inner">
-        <div class="progress-bar">
-          <div class="timer">
-            <div id="timer-digits"><span id="minutes">25</span>:<span id="seconds">00</span></div>
-            <a href="#" class="link" id="start">START</a>
-            <a href="#" class="link hidden" id="pause">PAUSE</a>
-            <a href="#" class="link hidden" id="restart">RESTART</a>
-            <a href="#" class="link hidden" id="resume">RESUME</a>
-            <a href="#" class="link hidden" id="shortBreakStart">START</a>
-            <a href="#" class="link hidden" id="longBreakStart">START</a>
+  <div class="dim">
+    <h2 class="heading">pomodoro</h2>
+    <div class="container">
+      <div class="timer-modes">
+        <a href="#" class="pomodoro button active" id="pomodoro-button">pomodoro</a>
+        <a href="#" class="short-break button" id="short-break-mode-button">short break</a>
+        <a href="#" class="long-break button" id="long-break-mode-button">long break</a>
+      </div>
+      <div class="clock-face">
+        <div class="clock-face-inner">
+          <div class="progress-bar">
+            <div class="timer">
+              <div id="timer-digits"><span id="minutes">25</span>:<span id="seconds">00</span></div>
+              <a href="#" class="link" id="start">START</a>
+              <a href="#" class="link hidden" id="pause">PAUSE</a>
+              <a href="#" class="link hidden" id="restart">RESTART</a>
+              <a href="#" class="link hidden" id="resume">RESUME</a>
+              <a href="#" class="link hidden" id="shortBreakStart">START</a>
+              <a href="#" class="link hidden" id="longBreakStart">START</a>
+            </div>
           </div>
         </div>
       </div>
+      <div><a href="#" id="settings-icon"><img src="./assets/icon-settings.svg" alt="settings"></a></div>
     </div>
-    <div class="settings-icon"><a href="#"><img src="assets/icon-settings.svg" alt="settings"></a></div>
+  </div>
+  <div class="settings-page">
+    <div class="settings-header">
+      <div class="settings-header-container">
+        <h2 class="settings-title">Settings</h2>
+        <div class="close-icon"><a href="#" id="close-settings"><img src="./assets/icon-close.svg" alt="close"></a></div>
+      </div>
+    </div>
+    <div class="settings-body">
+      <form id="settings-form">
+        <div class="time-setting">
+          <h3 class="settings-mini-heading">TIME (MINUTES)</h3>
+          <div class="number-changer-container">
+            <div class="number-changer">
+              <label for="pomodoro-minutes">pomodoro</label>
+              <div class="input-merge">
+                <input type="number" name="pomodoro-minutes" class="timers" id="pomodoro-minutes">
+                <div class="arrows">
+                  <a href="#" id="pomo-arrow-up"><img src="./assets/icon-arrow-up.svg" alt="increase"></a>
+                  <a href="#" id="pomo-arrow-down"><img src="./assets/icon-arrow-down.svg" alt="decrease"></a>
+                </div>
+              </div>
+            </div>
+            <div class="number-changer">
+              <label for="short-break-minutes">short break</label>
+              <div class="input-merge">
+                <input type="number" name="short-break-minutes" class="timers" id="short-break-minutes">
+                <div class="arrows">
+                  <a href="#" id="shortB-arrow-up"><img src="./assets/icon-arrow-up.svg" alt="increase"></a>
+                  <a href="#" id="shortB-arrow-down"><img src="./assets/icon-arrow-down.svg" alt="decrease"></a>
+                </div>
+              </div>
+            </div>
+            <div class="number-changer">
+              <label for="long-break-minutes">long break</label>
+              <div class="input-merge">
+                <input type="number" name="long-break-minutes" class="timers" id="long-break-minutes">
+                <div class="arrows">
+                  <a href="#" id="longB-arrow-up"><img src="./assets/icon-arrow-up.svg" alt="increase"></a>
+                  <a href="#" id="longB-arrow-down"><img src="./assets/icon-arrow-down.svg" alt="decrease"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      <div class="font-setting">
+        <h3 class="settings-mini-heading">FONT</h3>
+        <div class="font-selections">
+          <div class="font-icon selected" id="kumbh-sans">Aa</div>
+          <div class="font-icon" id="roboto-slab">Aa</div>
+          <div class="font-icon" id="sapce-mono">Aa</div>
+        </div>
+      </div>
+      
+      <div class="color-setting">
+        <h3 class="settings-mini-heading">COLOR</h3>
+        <div class="colors">
+          <div class="color-selection orange ">
+            <img src="./assets/check.svg" alt="selected" class="check">
+          </div>
+          <div class="color-selection cyan">
+            <img src="./assets/check.svg" alt="selected" class="check hidden">
+          </div>
+          <div class="color-selection purple">
+            <img src="./assets/check.svg" alt="selected" class="check hidden">
+          </div>
+        </div>
+      </div>
+      <button type="button" id="apply">Apply</button>
+    </div>
   </div>
 </body>
 <script src="./script.js"></script>

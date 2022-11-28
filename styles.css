@@ -133,6 +133,182 @@ a.button:hover{
 .unhide{
     display: block;
 }
-@media screen and (max-width: 1440px){
-    
+
+/*Settings page*/
+.settings-page{
+    z-index: 1;
+    height: 464px;
+    width: 540px;
+    border-radius: 25px;
+    position: absolute;
+    top: 20%;
+    left: 32vw;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.settings-header{
+    width: 100%;
+    height: 18%;
+    border-bottom: #E3E1E1 1px solid;
+    display: flex;
+    justify-content: center;
+}
+.settings-title{
+    color: #161932;
+}
+.settings-header-container{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.settings-body{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70%;
+}
+#settings-form{
+    height: 49%;
+    width: 100%;
+    border-bottom: #E3E1E1 1px solid;
+}
+.time-setting{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.settings-mini-heading{
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 5px;
+    text-align: left;
+    color: #161932;
+}
+.number-changer-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;   
+}
+.number-changer{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+}
+.number-changer label{
+    height: 12px;
+    font-weight: 700;
+    color: #1E213F;
+    opacity: 0.4;    
+}
+.input-merge{
+    display: flex;
+    background: #EFF1FA;
+    height: 48px;
+    width: 100%;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.timers{
+    width: 80%;
+    border: none;
+    background: #EFF1FA;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.arrows{
+    display: flex;
+    flex-direction: column;
+    margin-right: 0%;
+}
+.font-setting, .color-setting{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30%;
+}
+.font-setting{
+    border-bottom: #E3E1E1 1px solid;
+}
+.font-selections, .colors{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+.font-icon{
+    background: #EFF1FA;
+}
+.font-icon, .color-selection{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#apply{
+    height: 53px;
+    width: 140px;
+    border-radius: 30px;
+    background-color: var(--orange-theme);
+    margin: -1% 35% auto 35%;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+.color-selection.orange{
+    background-color: var(--orange-theme);
+}
+.color-selection.cyan{
+    background-color: var(--cyan-theme);
+}
+.color-selection.purple{
+    background-color: var(--purple-theme);
+}
+#roboto-slab{
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+#kumbh-sans{
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0px;
+}
+#space-mono{
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+.font-icon.selected{
+    background: #161932;
 }
