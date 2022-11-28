@@ -107,35 +107,41 @@ pageSeconds.innerHTML=numDisp(timerData.second);
 /**----------EVENT HANDLERS----------------- */
 
 //start eventhandler
-starter.addEventListener("click",()=>{
+starter.addEventListener("click",(event)=>{
+    event.preventDefault();
     countdown(timerData.minute,timerData.second);
 });
 
 //restart event handler
-restarter.addEventListener("click",()=>{
+restarter.addEventListener("click",(event)=>{
+    event.preventDefault();
     timerData.startMethod();
     restarter.classList.add('hidden');
 });
 
 //pause event handler
-pauser.addEventListener("click",()=>{
+pauser.addEventListener("click",(event)=>{
+    event.preventDefault();
     timerData.pauseMethod();
 });
 
 //resume event handler
-resumer.addEventListener("click",()=>{
+resumer.addEventListener("click",(event)=>{
+    event.preventDefault();
     timerData.resumeMethod(); 
 });
 
 //shortBreakStart event listener
 const shortBreakStart= document.getElementById('shortBreakStart');
-shortBreakStart.addEventListener("click",()=>{
+shortBreakStart.addEventListener("click",(event)=>{
+    event.preventDefault();
     countdown(timerData.shortBreak.minutes,timerData.shortBreak.seconds);
 });
 
 //longBreakStart event listener
 const longBreakStart= document.getElementById('longBreakStart');
-longBreakStart.addEventListener("click",()=>{
+longBreakStart.addEventListener("click",(event)=>{
+    event.preventDefault();
     longBreakStart.classList.add('hidden');
     pauser.classList.remove('hidden');
     countdown(timerData.longBreak.minutes,timerData.longBreak.seconds);
