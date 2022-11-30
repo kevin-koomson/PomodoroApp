@@ -46,7 +46,7 @@ a.button{
 }
 a.button.active{
     background: var(--orange-theme);
-    color: #D7E0FF;
+    color: #1E213F;
 }
 a.button:hover{
     color: #D7E0FF;
@@ -218,6 +218,9 @@ a.button:hover{
     width: 80%;
     border: none;
     background: #EFF1FA;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -250,6 +253,7 @@ input[type=number] {
 }
 .font-icon{
     background: #EFF1FA;
+    color: rgba(30, 33, 63, 1);
 }
 .font-icon, .color-selection{
     width: 40px;
@@ -260,7 +264,10 @@ input[type=number] {
     align-items: center;
     cursor: pointer;
 }
-
+.font-icon:hover, .color-selection:hover{
+    padding: 5px;
+    border: rgba(50, 31, 99, 0.658) 1px solid;
+}
 #apply{
     height: 53px;
     width: 140px;
@@ -276,18 +283,19 @@ input[type=number] {
     border: none;
     cursor: pointer;
 }
-.color-selection.orange{
+.color-selection#orange{
     background-color: var(--orange-theme);
 }
-.color-selection.cyan{
+.color-selection#cyan{
     background-color: var(--cyan-theme);
 }
-.color-selection.purple{
+.color-selection#purple{
     background-color: var(--purple-theme);
 }
 .check{
     width: 60%;
 }
+
 #roboto-slab{
     font-family: 'Roboto Slab', serif;
     font-size: 15px;
@@ -311,14 +319,21 @@ input[type=number] {
 }
 .font-icon.selected{
     background: #161932;
+    color: #FFFFFF;
 }
 .dim{
-    background: rgba(10, 12, 28, 0);
     margin: 0px;
     height: 100%;
     width: 100%;
     z-index: 1;
 }
+.dimmed{
+    background: rgba(10, 12, 28, 0.8);
+}
 .hidden{
     display: none;
+}
+#close-settings:hover, .arrow:hover{
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(320deg) brightness(97%) contrast(104%);
+    opacity: 1;
 }

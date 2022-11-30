@@ -1,5 +1,6 @@
 /**-------TIMER DATA--------*/
 //declarations
+    //timer functionality declarations
 const pageMinutes=document.getElementById('minutes');
 const pageSeconds=document.getElementById('seconds');
 const progressBar=document.querySelector('.progress-bar');
@@ -8,14 +9,12 @@ const pauser=document.getElementById('pause');
 const restarter=document.getElementById('restart');
 const resumer=document.getElementById('resume');
 
+
 const timerData={
     //default values.
-    minute: 0,
-    second: 10,
+    minute: 25,
+    second: 0,
     activeColor: 'var(--orange-theme)',
-    orangeColor: 'var(--orange-theme)',
-    cyanColor: 'var(--cyan-theme)',
-    purpleColor: 'var(--purple-theme)',
     canPause: false,
     cycles: {
         secondsStudied: 0,
@@ -30,21 +29,26 @@ const timerData={
         longB: false
     },
     shortBreak:{
-        minutes:0,
-        seconds:5
+        minutes:5,
+        seconds:0
     },
     longBreak:{
-        minutes:0,
-        seconds:12
+        minutes:15,
+        seconds:0
     },
     pausedValue:{
         minutes: 0,
-        seconds: 0
+        seconds: 0,
+        progress:0
     },
     //methods
     pauseMethod(){
-        this.pausedValue.minutes=pageMinutes.innerHTML;
-        this.pausedValue.seconds=pageSeconds.innerHTML;
+        this.pausedValue.minutes=parseInt(pageMinutes.innerHTML);
+        this.pausedValue.seconds=parseInt(pageSeconds.innerHTML);
+        let total=parseInt(this.pausedValue.minutes)*60 + parseInt(this.pausedValue.seconds);
+        if(this.mode.pomo) this.pausedValue.progress=(this.minute*60)-total
+        else if(this.mode.shortB) this.pausedValue.progress=(this.shortBreak.minutes*60)-total
+        else if (this.mode.longB) this.pausedValue.progress=(this.longBreak.minutes*60)-total
         timerData.canPause=true;
         pauser.classList.add('hidden');
         resumer.classList.remove('hidden');
@@ -53,14 +57,10 @@ const timerData={
         timerData.canPause=false;
         resumer.classList.add('hidden');
         pauser.classList.remove('hidden');
-        countdown(this.pausedValue.minutes,this.pausedValue.seconds);
-        if(this.mode.pomo){
-            if(this.cycles.sessionsDone%3==0) timerData.longBreakMode()
-            else timerData.shortBreakMode();
-        }
+        countdown(this.pausedValue.minutes,this.pausedValue.seconds,this.pausedValue.progress);
     },
     pomoMode(){
-        console.log('pomo mode');
+        //console.log('pomo mode');
         this.mode.pomo=true;
         this.mode.shortB=false;
         this.mode.longB=false;
@@ -70,23 +70,26 @@ const timerData={
          pageMinutes.innerHTML=numDisp(this.minute); pageSeconds.innerHTML=numDisp(this.second);
          starter.classList.remove('hidden');
          shortBreakStart.classList.add('hidden');
-         progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
+         longBreakStart.classList.add('hidden');
+         progressBar.style.background=`conic-gradient(${this.activeColor} 360deg,#161932 0deg)`;
     },
     shortBreakMode(){
-        console.log('short break mode');
+        //console.log('short break mode');
         this.mode.pomo=false;
         this.mode.shortB=true;
         this.mode.longB=false;
         document.getElementById('short-break-mode-button').classList.add('active');
+        document.getElementById('long-break-mode-button').classList.remove('active');
         document.getElementById('pomodoro-button').classList.remove('active');
         pageMinutes.innerHTML=numDisp(this.shortBreak.minutes); pageSeconds.innerHTML=numDisp(this.shortBreak.seconds);
-        progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
+        progressBar.style.background=`conic-gradient(${this.activeColor} 360deg,#161932 0deg)`;
         shortBreakStart.classList.remove('hidden');
+        longBreakStart.classList.add('hidden');
         starter.classList.add('hidden');
         restarter.classList.add('hidden');
     },
     longBreakMode(){
-        console.log('long break mode');
+        //console.log('long break mode');
         this.mode.pomo=false;
         this.mode.shortB=false;
         this.mode.longB=true;
@@ -94,10 +97,11 @@ const timerData={
         document.getElementById('short-break-mode-button').classList.remove('active');
         document.getElementById('long-break-mode-button').classList.add('active');
         pageMinutes.innerHTML=numDisp(this.longBreak.minutes); pageSeconds.innerHTML=numDisp(this.longBreak.seconds);
-        progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
+        progressBar.style.background=`conic-gradient(${this.activeColor} 360deg,#161932 0deg)`;
         longBreakStart.classList.remove('hidden');
         starter.classList.add('hidden');
         restarter.classList.add('hidden');
+        shortBreakStart.classList.add('hidden');
     },
 }
 //first run after load
@@ -147,6 +151,161 @@ longBreakStart.addEventListener("click",(event)=>{
     countdown(timerData.longBreak.minutes,timerData.longBreak.seconds);
 });
 
+//settings page events handlers
+    //open and close settings page
+const settingsIcon = document.getElementById('settings-icon');
+const settingsPage = document.querySelector('div.settings-page');
+const dimLayer = document.querySelector('div.dim');
+const closeButton = document.getElementById('close-settings');
+
+settingsIcon.addEventListener("click",(event)=>{
+    event.preventDefault();
+    settingsPage.classList.toggle('hidden');
+    dimLayer.classList.toggle('dimmed');
+})
+closeButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    settingsPage.classList.toggle('hidden');
+    dimLayer.classList.toggle('dimmed');
+});
+    //arrows to change input values
+const arrowUpButtons=document.querySelectorAll('img.arrow-up');
+arrowUpButtons.forEach((i,j)=>{
+    i.addEventListener("click",(event)=>{
+        let res=event.target.parentNode.parentNode.parentNode.children[0].value;
+        event.target.parentNode.parentNode.parentNode.children[0].value=parseInt(res)+1;
+    });
+});
+const arrowDownButtons=document.querySelectorAll('img.arrow-down');
+arrowDownButtons.forEach((i,j)=>{
+    i.addEventListener("click",(event)=>{
+        let res=event.target.parentNode.parentNode.parentNode.children[0].value;
+        event.target.parentNode.parentNode.parentNode.children[0].value=parseInt(res)-1;
+    });
+});
+    //font selection 
+const fonts= document.querySelectorAll('div.font-icon');
+fonts.forEach((i,j)=>{
+    i.addEventListener("click",(event)=>{
+        switch(j){
+            case 0:
+                i.classList.add('selected');
+                fonts[1].classList.remove('selected');
+                fonts[2].classList.remove('selected');
+                break;
+            case 1:
+                i.classList.add('selected');
+                fonts[0].classList.remove('selected');
+                fonts[2].classList.remove('selected');
+                break;
+            case 2:
+                i.classList.add('selected');
+                fonts[0].classList.remove('selected');
+                fonts[1].classList.remove('selected');
+                break;
+        }
+    });
+});
+const colors = document.querySelectorAll('.color-selection');
+
+colors.forEach((i,j)=>{
+    i.addEventListener("click",(event)=>{
+        switch(j){
+            case 0:
+                timerData.activeColor='var(--orange-theme)';
+                colors[1].firstElementChild.classList.add('hidden');
+                colors[2].firstElementChild.classList.add('hidden');
+                i.firstElementChild.classList.remove('hidden');
+                i.classList.add('chosen');
+                colors[1].firstElementChild.classList.add('chosen');
+                colors[2].firstElementChild.classList.add('chosen');
+                break;
+            case 1:
+                timerData.activeColor='var(--cyan-theme)';
+                colors[0].firstElementChild.classList.add('hidden');
+                colors[2].firstElementChild.classList.add('hidden');
+                i.firstElementChild.classList.remove('hidden');
+                i.classList.add('chosen');
+                colors[0].firstElementChild.classList.add('chosen');
+                colors[2].firstElementChild.classList.add('chosen');
+                break;
+            case 2:
+                timerData.activeColor='var(--purple-theme)';
+                colors[0].firstElementChild.classList.add('hidden');
+                colors[1].firstElementChild.classList.add('hidden');
+                i.firstElementChild.classList.remove('hidden');
+                i.classList.add('chosen');
+                colors[0].firstElementChild.classList.add('chosen');
+                colors[1].firstElementChild.classList.add('chosen');
+                break;
+        }
+    })
+})
+const apply = document.getElementById('apply');
+
+apply.addEventListener("click",()=>{
+    //text
+    let fontText=document.querySelector('.font-icon.selected').id;
+    let tModes=document.querySelectorAll('.timer-modes a.button');
+    let pageNums=document.querySelectorAll('#timer-digits span');   
+    let links=document.querySelectorAll('.timer .link');
+    switch(fontText){
+        case 'kumbh-sans':
+            tModes.forEach(i=>i.style.fontFamily='\'Kumbh Sans\', sans-serif');
+            pageNums.forEach(i=>i.style.fontFamily='\'Kumbh Sans\', sans-serif');
+            links.forEach(i=>i.style.fontFamily='\'Kumbh Sans\', sans-serif');
+            break;
+        case 'roboto-slab':
+            tModes.forEach(i=>i.style.fontFamily='\'Roboto Slab\', serif');
+            pageNums.forEach(i=>i.style.fontFamily='\'Roboto Slab\', serif');            
+            links.forEach(i=>i.style.fontFamily='\'Roboto Slab\', serif'); 
+            break;
+        case 'space-mono':
+            tModes.forEach(i=>i.style.fontFamily='\'Space Mono\', monospace');
+            pageNums.forEach(i=>i.style.fontFamily='\'Space Mono\', monospace');
+            links.forEach(i=>i.style.fontFamily='\'Space Mono\', monospace');
+            break;
+    }
+    //color
+    let selectedColor=document.querySelector('.color-selection.chosen').id;
+    switch(selectedColor){
+        case 'orange':
+            progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
+            document.querySelector('a.button.active').style.backgroundColor=`var(--orange-theme)`;
+            apply.style.backgroundColor=`var(--orange-theme)`;
+            break;
+        case 'cyan': 
+            progressBar.style.background='conic-gradient(var(--cyan-theme) 360deg,#161932 0deg)';
+            document.querySelector('a.button.active').style.backgroundColor=`var(--cyan-theme)`;
+            apply.style.backgroundColor=`var(--cyan-theme)`;
+            break;
+        case 'purple':
+            progressBar.style.background='conic-gradient(var(--purple-theme) 360deg,#161932 0deg)';
+            document.querySelector('a.button.active').style.backgroundColor=`var(--purple-theme)`;
+            apply.style.backgroundColor=`var(--purple-theme)`;
+            break;
+    }
+    
+    //mintues
+    /**check type of 
+     * convert to number if string
+     * save to timerdata
+     * update page display with it
+     */
+    let p,s,l;
+    p=parseInt(document.getElementById('pomodoro-minutes').value);
+    s=parseInt(document.getElementById('short-break-minutes').value);
+    l=parseInt(document.getElementById('long-break-minutes').value);
+    timerData.minute=p;
+    timerData.shortBreak.minutes=s;
+    timerData.longBreak.seconds=l;
+    pageMinutes.innerHTML=p;
+
+
+    //close settings page
+    settingsPage.classList.toggle('hidden');
+    dimLayer.classList.toggle('dimmed');
+})
 /**-----------HELPER FUNCTIONS---------- */
 
 function numDisp(num){
@@ -155,21 +314,24 @@ function numDisp(num){
     return s;
 }
 
-function countdown(minutes,seconds){
+function countdown(minutes,seconds,bar){
     let min=minutes;
     let secs=seconds;
     let rads=(min*60)+secs;
-    let v=rads;
+    let v;
+    if(bar)v=rads-bar 
+    else v=rads;
     pauser.classList.remove('hidden'); 
     starter.classList.add('hidden');
     shortBreakStart.classList.add('hidden');
+    longBreakStart.classList.add('hidden');
     let ticktock=setInterval(()=>{
             if(!timerData.canPause){
-                secs--; 
+                secs--; //console.log(min+' '+secs+' '+v);
                 v--; if(v<0)v=0;
                 if(min>=0) pageMinutes.innerHTML=numDisp(min);
                 if(secs>=0) pageSeconds.innerHTML=numDisp(secs);
-                if (rads>=0) progressBar.style.background=`conic-gradient(var(--orange-theme) ${(v/rads)*360}deg,#161932 0deg)`;
+                if (v>=0) progressBar.style.background=`conic-gradient(${timerData.activeColor} ${(v/rads)*360}deg,#161932 0deg)`;
                 if(secs<0){
                     min--;
                     secs=59;
@@ -189,7 +351,7 @@ function countdown(minutes,seconds){
                         }
                         else if(timerData.mode.shortB){
                            timerData.cycles.breakCount++;
-                           console.log(timerData.cycles.breakCount+'breakcount');
+                           //console.log(timerData.cycles.breakCount+'breakcount');
                            timerData.pomoMode();
                         }
                         else if(timerData.mode.longB){
@@ -199,5 +361,5 @@ function countdown(minutes,seconds){
                 }
             }
             else clearInterval(ticktock);
-        },1000);
+        },10);
 }
