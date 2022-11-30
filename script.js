@@ -14,7 +14,7 @@ const timerData={
     //default values.
     minute: 25,
     second: 0,
-    activeColor: 'var(--orange-theme)',
+    activeColor: 'var(--selected)',
     canPause: false,
     cycles: {
         secondsStudied: 0,
@@ -138,14 +138,14 @@ resumer.addEventListener("click",(event)=>{
 //shortBreakStart event listener
 const shortBreakStart= document.getElementById('shortBreakStart');
 shortBreakStart.addEventListener("click",(event)=>{
-    event.preventDefault();
+    //event.preventDefault();
     countdown(timerData.shortBreak.minutes,timerData.shortBreak.seconds);
 });
 
 //longBreakStart event listener
 const longBreakStart= document.getElementById('longBreakStart');
 longBreakStart.addEventListener("click",(event)=>{
-    event.preventDefault();
+    //event.preventDefault();
     longBreakStart.classList.add('hidden');
     pauser.classList.remove('hidden');
     countdown(timerData.longBreak.minutes,timerData.longBreak.seconds);
@@ -212,29 +212,35 @@ colors.forEach((i,j)=>{
     i.addEventListener("click",(event)=>{
         switch(j){
             case 0:
-                timerData.activeColor='var(--orange-theme)';
+                //timerData.activeColor='var(--orange-theme)';
                 colors[1].firstElementChild.classList.add('hidden');
                 colors[2].firstElementChild.classList.add('hidden');
                 i.firstElementChild.classList.remove('hidden');
                 i.classList.add('chosen');
+                colors[1].classList.remove('chosen');
+                colors[2].classList.remove('chosen');
                 colors[1].firstElementChild.classList.add('chosen');
                 colors[2].firstElementChild.classList.add('chosen');
                 break;
             case 1:
-                timerData.activeColor='var(--cyan-theme)';
+                //timerData.activeColor='var(--cyan-theme)';
                 colors[0].firstElementChild.classList.add('hidden');
                 colors[2].firstElementChild.classList.add('hidden');
                 i.firstElementChild.classList.remove('hidden');
                 i.classList.add('chosen');
+                colors[0].classList.remove('chosen');
+                colors[2].classList.remove('chosen');
                 colors[0].firstElementChild.classList.add('chosen');
                 colors[2].firstElementChild.classList.add('chosen');
                 break;
             case 2:
-                timerData.activeColor='var(--purple-theme)';
+                //timerData.activeColor='var(--purple-theme)';
                 colors[0].firstElementChild.classList.add('hidden');
                 colors[1].firstElementChild.classList.add('hidden');
                 i.firstElementChild.classList.remove('hidden');
                 i.classList.add('chosen');
+                colors[0].classList.remove('chosen');
+                colors[1].classList.remove('chosen');
                 colors[0].firstElementChild.classList.add('chosen');
                 colors[1].firstElementChild.classList.add('chosen');
                 break;
@@ -267,31 +273,22 @@ apply.addEventListener("click",()=>{
             break;
     }
     //color
+    let r=document.querySelector(':root');
+
     let selectedColor=document.querySelector('.color-selection.chosen').id;
     switch(selectedColor){
         case 'orange':
-            progressBar.style.background='conic-gradient(var(--orange-theme) 360deg,#161932 0deg)';
-            document.querySelector('a.button.active').style.backgroundColor=`var(--orange-theme)`;
-            apply.style.backgroundColor=`var(--orange-theme)`;
+            r.style.setProperty('--selected','#F87070');
             break;
         case 'cyan': 
-            progressBar.style.background='conic-gradient(var(--cyan-theme) 360deg,#161932 0deg)';
-            document.querySelector('a.button.active').style.backgroundColor=`var(--cyan-theme)`;
-            apply.style.backgroundColor=`var(--cyan-theme)`;
+            r.style.setProperty('--selected','#70F3F8');
             break;
         case 'purple':
-            progressBar.style.background='conic-gradient(var(--purple-theme) 360deg,#161932 0deg)';
-            document.querySelector('a.button.active').style.backgroundColor=`var(--purple-theme)`;
-            apply.style.backgroundColor=`var(--purple-theme)`;
+            r.style.setProperty('--selected','#D881F8');
             break;
     }
     
     //mintues
-    /**check type of 
-     * convert to number if string
-     * save to timerdata
-     * update page display with it
-     */
     let p,s,l;
     p=parseInt(document.getElementById('pomodoro-minutes').value);
     s=parseInt(document.getElementById('short-break-minutes').value);

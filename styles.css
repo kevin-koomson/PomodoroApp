@@ -3,6 +3,7 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 :root{
+    --selected: #F87070;
     --orange-theme: #F87070;
     --cyan-theme: #70F3F8;
     --purple-theme: #D881F8;
@@ -18,7 +19,7 @@ body{
     text-align: center;
     margin-bottom: 55px;
     margin-top: 0%;
-    padding-top: 2%;
+    padding-top: 4%;
 }
 .timer-modes{
     width: 373px;
@@ -45,7 +46,7 @@ a.button{
     justify-content: center;
 }
 a.button.active{
-    background: var(--orange-theme);
+    background: var(--selected);
     color: #1E213F;
 }
 a.button:hover{
@@ -93,7 +94,7 @@ a.button:hover{
     display: flex;
 }
 .progress-bar{
-    background: conic-gradient(var(--orange-theme) 360deg,#161932 0deg);
+    background: conic-gradient(var(--selected) 360deg,#161932 0deg);
     height: 339px;
     width: 339px;
     border-radius: 50%;
@@ -127,7 +128,7 @@ a.button:hover{
     margin-right: auto;
 }
 .link:hover{
-    color: var(--orange-theme);
+    color: var(--selected);
 }
 
 
@@ -272,7 +273,7 @@ input[type=number] {
     height: 53px;
     width: 140px;
     border-radius: 30px;
-    background-color: var(--orange-theme);
+    background-color: var(--selected);
     margin: -1% 35% auto 35%;
     color: #FFFFFF;
     font-size: 16px;
