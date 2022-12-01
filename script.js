@@ -302,7 +302,7 @@ apply.addEventListener("click",()=>{
     //close settings page
     settingsPage.classList.toggle('hidden');
     dimLayer.classList.toggle('dimmed');
-})
+});
 /**-----------HELPER FUNCTIONS---------- */
 
 function numDisp(num){
