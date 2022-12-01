@@ -340,7 +340,7 @@ input[type=number] {
     filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(320deg) brightness(97%) contrast(104%);
     opacity: 1;
 }
-@media (max-width: 400px)    {
+@media (max-width: 600px){
     
     .timer-modes{
         height: 63px;
@@ -396,11 +396,11 @@ input[type=number] {
         letter-spacing: 13.125px;
     }
     .settings-page{
-        height: 70%;
+        height: 549px;
         width: 327px;
         border-radius: 15px;
         top: 46px;
-        left: 24px;
+        left: 8%;
     }
     .settings-header{
         height: 10%;
@@ -465,9 +465,6 @@ input[type=number] {
         width: 140px;
         left: 94px;
         margin-left: 25%;
-    }
-    .dim{
-        padding-bottom: 22%;
     }
     
 }
