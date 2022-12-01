@@ -137,15 +137,16 @@ a.button:hover{
 /*Settings page*/
 .settings-page{
     z-index: 2;
-    height: 464px;
+    height: 65%;
     width: 540px;
     border-radius: 25px;
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 32vw;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 .settings-header{
@@ -170,7 +171,9 @@ a.button:hover{
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -6%;
     height: 70%;
+    
 }
 #settings-form{
     height: 49%;
@@ -276,7 +279,6 @@ input[type=number] {
     width: 140px;
     border-radius: 30px;
     background-color: var(--selected);
-    margin: -1% 35% auto 35%;
     color: #FFFFFF;
     font-size: 16px;
     font-weight: 700;
@@ -285,6 +287,7 @@ input[type=number] {
     text-align: center;
     border: none;
     cursor: pointer;
+    margin-bottom: -5%;
 }
 .color-selection#orange{
     background-color: var(--orange-theme);
@@ -326,7 +329,7 @@ input[type=number] {
 }
 .dim{
     margin: 0px;
-    height: 100%;
+    padding: 0;
     width: 100%;
     z-index: 1;
 }
@@ -396,14 +399,17 @@ input[type=number] {
         letter-spacing: 13.125px;
     }
     .settings-page{
-        height: 549px;
+        height: 70%;
         width: 327px;
         border-radius: 15px;
-        top: 46px;
+        top: 10%;
         left: 8%;
     }
     .settings-header{
         height: 10%;
+    }
+    .settings-body{
+        margin-top: -20%;
     }
     .settings-title{
         height: 20px;
@@ -463,8 +469,9 @@ input[type=number] {
     #apply{
         height: 53px;
         width: 140px;
-        left: 94px;
-        margin-left: 25%;
+        margin-bottom: -9%;
     }
-    
+    div.dimmed{
+        padding-bottom: 45%;
+    }
 }
