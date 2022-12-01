@@ -358,5 +358,5 @@ function countdown(minutes,seconds,bar){
                 }
             }
             else clearInterval(ticktock);
-        },10);
+        },1000);
 }
