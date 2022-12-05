@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap');
 *{
     box-sizing: border-box;
     font-family: 'Kumbh Sans', sans-serif;
@@ -9,11 +10,11 @@
     --purple-theme: #D881F8;
 
 }
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap');
 body{
     background-color: #1E213F;
     color: #D7E0FF;
     margin: 0px;
+    overflow: hidden;
 }
 .heading{
     text-align: center;
@@ -34,6 +35,7 @@ body{
     align-items: center;
     margin-bottom: 45px;
     z-index: 1;
+    margin-top: -5%;
 }
 a.button{
     display: flex;
@@ -44,6 +46,7 @@ a.button{
     background: #161932;
     color: #7f8bb7;
     border: none;
+    margin: 8px;
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -72,7 +75,7 @@ a.button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-left: auto;
     margin-right: auto;
 }
@@ -329,9 +332,10 @@ input[type=number] {
 }
 .dim{
     margin: 0px;
-    padding: 0;
     width: 100%;
-    z-index: 1;
+    height: 100%;
+    z-index: 1; 
+    padding-bottom: 2%;
 }
 .dimmed{
     background: rgba(10, 12, 28, 0.8);
@@ -403,7 +407,7 @@ input[type=number] {
         width: 327px;
         border-radius: 15px;
         top: 10%;
-        left: 8%;
+        left: 10%;
     }
     .settings-header{
         height: 10%;
@@ -472,6 +476,6 @@ input[type=number] {
         margin-bottom: -9%;
     }
     div.dimmed{
-        padding-bottom: 45%;
+        padding-bottom: 50%;
     }
 }

@@ -68,6 +68,8 @@ const timerData={
          document.getElementById('short-break-mode-button').classList.remove('active');
          document.getElementById('long-break-mode-button').classList.remove('active');
          pageMinutes.innerHTML=numDisp(this.minute); pageSeconds.innerHTML=numDisp(this.second);
+         pauser.classList.add('hidden'); 
+         resumer.classList.add('hidden');
          starter.classList.remove('hidden');
          shortBreakStart.classList.add('hidden');
          longBreakStart.classList.add('hidden');
@@ -83,6 +85,8 @@ const timerData={
         document.getElementById('pomodoro-button').classList.remove('active');
         pageMinutes.innerHTML=numDisp(this.shortBreak.minutes); pageSeconds.innerHTML=numDisp(this.shortBreak.seconds);
         progressBar.style.background=`conic-gradient(${this.activeColor} 360deg,#161932 0deg)`;
+        pauser.classList.add('hidden'); 
+        resumer.classList.add('hidden');
         shortBreakStart.classList.remove('hidden');
         longBreakStart.classList.add('hidden');
         starter.classList.add('hidden');
@@ -98,6 +102,8 @@ const timerData={
         document.getElementById('long-break-mode-button').classList.add('active');
         pageMinutes.innerHTML=numDisp(this.longBreak.minutes); pageSeconds.innerHTML=numDisp(this.longBreak.seconds);
         progressBar.style.background=`conic-gradient(${this.activeColor} 360deg,#161932 0deg)`;
+        pauser.classList.add('hidden'); 
+        resumer.classList.add('hidden');
         longBreakStart.classList.remove('hidden');
         starter.classList.add('hidden');
         restarter.classList.add('hidden');
@@ -113,6 +119,7 @@ pageSeconds.innerHTML=numDisp(timerData.second);
 //start eventhandler
 starter.addEventListener("click",(event)=>{
     event.preventDefault();
+    timerData.canPause=false;
     countdown(timerData.minute,timerData.second);
 });
 
@@ -139,6 +146,7 @@ resumer.addEventListener("click",(event)=>{
 const shortBreakStart= document.getElementById('shortBreakStart');
 shortBreakStart.addEventListener("click",(event)=>{
     //event.preventDefault();
+    timerData.canPause=false;
     countdown(timerData.shortBreak.minutes,timerData.shortBreak.seconds);
 });
 
@@ -146,11 +154,28 @@ shortBreakStart.addEventListener("click",(event)=>{
 const longBreakStart= document.getElementById('longBreakStart');
 longBreakStart.addEventListener("click",(event)=>{
     //event.preventDefault();
+    timerData.canPause=false;
     longBreakStart.classList.add('hidden');
     pauser.classList.remove('hidden');
     countdown(timerData.longBreak.minutes,timerData.longBreak.seconds);
 });
 
+/*--mode buttons Event listeners--*/
+    //pomo mode button event listener
+$("#pomodoro-button").click(()=>{
+    timerData.canPause=true;
+    if(!timerData.mode.pomo) timerData.pomoMode();
+});
+    //short break mode button
+$("#short-break-mode-button").click(()=>{
+    timerData.canPause=true;
+    if(!timerData.mode.shortB) timerData.shortBreakMode();
+});
+    //long break mode button
+$("#long-break-mode-button").click(()=>{
+    timerData.canPause=true;
+    if(!timerData.mode.longB) timerData.longBreakMode();
+});
 //settings page events handlers
     //open and close settings page
 const settingsIcon = document.getElementById('settings-icon');
@@ -323,7 +348,7 @@ function countdown(minutes,seconds,bar){
     shortBreakStart.classList.add('hidden');
     longBreakStart.classList.add('hidden');
     let ticktock=setInterval(()=>{
-            if(!timerData.canPause){
+            if(!timerData.canPause){ 
                 secs--; //console.log(min+' '+secs+' '+v);
                 v--; if(v<0)v=0;
                 if(min>=0) pageMinutes.innerHTML=numDisp(min);
@@ -358,5 +383,5 @@ function countdown(minutes,seconds,bar){
                 }
             }
             else clearInterval(ticktock);
-        },1000);
+        },10);
 }
