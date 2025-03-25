@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap');
-*{
+
+* {
     box-sizing: border-box;
     font-family: 'Kumbh Sans', sans-serif;
 }
-:root{
+
+:root {
     --selected: #F87070;
     --orange-theme: #F87070;
     --cyan-theme: #70F3F8;
     --purple-theme: #D881F8;
 
 }
-body{
+
+body {
     background-color: #1E213F;
     color: #D7E0FF;
     margin: 0px;
     overflow: hidden;
 }
-.heading{
+
+.heading {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -25,8 +29,9 @@ body{
     padding-top: 2%;
 
 }
-.timer-modes{
-    width: 373px;   
+
+.timer-modes {
+    width: 373px;
     height: 63px;
     border-radius: 31.5px;
     background: #161932;
@@ -37,7 +42,8 @@ body{
     z-index: 1;
     margin-top: -5%;
 }
-a.button{
+
+a.button {
     display: flex;
     height: 48px;
     width: 120px;
@@ -51,14 +57,17 @@ a.button{
     align-items: center;
     justify-content: center;
 }
-a.button.active{
+
+a.button.active {
     background: var(--selected);
     color: #1E213F;
 }
-a.button:hover{
+
+a.button:hover {
     color: #D7E0FF;
 }
-.timer{
+
+.timer {
     width: 325px;
     height: 325px;
     background: #161932;
@@ -69,7 +78,7 @@ a.button:hover{
     justify-content: space-around;
 }
 
-.container{
+.container {
     height: 100%;
     width: 500px;
     display: flex;
@@ -79,7 +88,8 @@ a.button:hover{
     margin-left: auto;
     margin-right: auto;
 }
-.clock-face{
+
+.clock-face {
     width: 410px;
     height: 410px;
     border-radius: 50%;
@@ -89,7 +99,8 @@ a.button:hover{
     box-shadow: -50px -50px 100px 0px #272C5A;
 
 }
-.clock-face-inner{
+
+.clock-face-inner {
     height: 366px;
     width: 366px;
     border-radius: 50%;
@@ -99,8 +110,9 @@ a.button:hover{
     justify-content: center;
     display: flex;
 }
-.progress-bar{
-    background: conic-gradient(var(--selected) 360deg,#161932 0deg);
+
+.progress-bar {
+    background: conic-gradient(var(--selected) 360deg, #161932 0deg);
     height: 339px;
     width: 339px;
     border-radius: 50%;
@@ -109,7 +121,8 @@ a.button:hover{
     justify-content: center;
     display: flex;
 }
-#timer-digits{
+
+#timer-digits {
     height: 101px;
     width: 233px;
     font-size: 100px;
@@ -120,7 +133,8 @@ a.button:hover{
     letter-spacing: -5px;
     text-align: center;
 }
-.link{
+
+.link {
     height: 16px;
     font-size: 16px;
     font-weight: 700;
@@ -132,13 +146,14 @@ a.button:hover{
     margin-left: auto;
     margin-right: auto;
 }
-.link:hover{
+
+.link:hover {
     color: var(--selected);
 }
 
 
 /*Settings page*/
-.settings-page{
+.settings-page {
     z-index: 2;
     height: 65%;
     width: 540px;
@@ -152,17 +167,20 @@ a.button:hover{
     justify-content: space-between;
     align-items: center;
 }
-.settings-header{
+
+.settings-header {
     width: 100%;
     height: 18%;
     border-bottom: #E3E1E1 1px solid;
     display: flex;
     justify-content: center;
 }
-.settings-title{
+
+.settings-title {
     color: #161932;
 }
-.settings-header-container{
+
+.settings-header-container {
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -170,25 +188,29 @@ a.button:hover{
     margin-left: auto;
     margin-right: auto;
 }
-.settings-body{
+
+.settings-body {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     margin-top: -6%;
     height: 70%;
-    
+
 }
-#settings-form{
+
+#settings-form {
     height: 49%;
     width: 100%;
     border-bottom: #E3E1E1 1px solid;
 }
-.time-setting{
+
+.time-setting {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.settings-mini-heading{
+
+.settings-mini-heading {
     font-size: 13px;
     font-weight: 700;
     line-height: 16px;
@@ -196,25 +218,29 @@ a.button:hover{
     text-align: left;
     color: #161932;
 }
-.number-changer-container{
+
+.number-changer-container {
     width: 100%;
     display: flex;
-    justify-content: space-between;   
+    justify-content: space-between;
 }
-.number-changer{
+
+.number-changer {
     width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 80px;
 }
-.number-changer label{
+
+.number-changer label {
     height: 12px;
     font-weight: 700;
     color: #1E213F;
-    opacity: 0.4;    
+    opacity: 0.4;
 }
-.input-merge{
+
+.input-merge {
     display: flex;
     background: #EFF1FA;
     height: 48px;
@@ -223,7 +249,8 @@ a.button:hover{
     justify-content: space-evenly;
     align-items: center;
 }
-.timers{
+
+.timers {
     width: 80%;
     border: none;
     background: #EFF1FA;
@@ -231,6 +258,7 @@ a.button:hover{
     line-height: 17px;
     letter-spacing: 0px;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
@@ -239,32 +267,38 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+    -moz-appearance: textfield; /* Firefox */
 }
-.arrows{
+
+.arrows {
     display: flex;
     flex-direction: column;
     margin-right: 0%;
 }
-.font-setting, .color-setting{
+
+.font-setting, .color-setting {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 30%;
 }
-.font-setting{
+
+.font-setting {
     border-bottom: #E3E1E1 1px solid;
 }
-.font-selections, .colors{
+
+.font-selections, .colors {
     display: flex;
     justify-content: space-between;
     width: 30%;
 }
-.font-icon{
+
+.font-icon {
     background: #EFF1FA;
     color: rgba(30, 33, 63, 1);
 }
-.font-icon, .color-selection{
+
+.font-icon, .color-selection {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -273,11 +307,13 @@ input[type=number] {
     align-items: center;
     cursor: pointer;
 }
-.font-icon:hover, .color-selection:hover{
+
+.font-icon:hover, .color-selection:hover {
     padding: 5px;
     border: rgba(50, 31, 99, 0.658) 1px solid;
 }
-#apply{
+
+#apply {
     height: 53px;
     width: 140px;
     border-radius: 30px;
@@ -292,69 +328,82 @@ input[type=number] {
     cursor: pointer;
     margin-bottom: -5%;
 }
-.color-selection#orange{
+
+.color-selection#orange {
     background-color: var(--orange-theme);
 }
-.color-selection#cyan{
+
+.color-selection#cyan {
     background-color: var(--cyan-theme);
 }
-.color-selection#purple{
+
+.color-selection#purple {
     background-color: var(--purple-theme);
 }
-.check{
+
+.check {
     width: 60%;
 }
 
-#roboto-slab{
+#roboto-slab {
     font-family: 'Roboto Slab', serif;
     font-size: 15px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0px;
 }
-#kumbh-sans{
+
+#kumbh-sans {
     font-family: 'Kumbh Sans', sans-serif;
     font-size: 15px;
     font-weight: 700;
     line-height: 19px;
     letter-spacing: 0px;
 }
-#space-mono{
+
+#space-mono {
     font-family: 'Space Mono', monospace;
     font-size: 15px;
     font-weight: 700;
     line-height: 22px;
     letter-spacing: 0px;
 }
-.font-icon.selected{
+
+.font-icon.selected {
     background: #161932;
     color: #FFFFFF;
 }
-.dim{
+
+.dim {
     margin: 0px;
     width: 100%;
     height: 100%;
-    z-index: 1; 
+    z-index: 1;
     padding-bottom: 2%;
 }
-.dimmed{
+
+.dimmed {
     background: rgba(10, 12, 28, 0.8);
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-#close-settings:hover, .arrow:hover{
+
+#close-settings:hover, .arrow:hover {
     filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(320deg) brightness(97%) contrast(104%);
     opacity: 1;
 }
-@media (max-width: 600px){
-    
-    .timer-modes{
+
+@media (max-width: 600px) {
+
+    .timer-modes {
         height: 63px;
         width: 327px;
         border-radius: 31.5px;
     }
-    a.button{
+
+    a.button {
         height: 48px;
         width: 106px;
         border-radius: 26.5px;
@@ -364,29 +413,35 @@ input[type=number] {
         letter-spacing: 0px;
         margin: 8px;
     }
-    .container{
+
+    .container {
         max-width: 90%;
     }
-    .clock-face{
+
+    .clock-face {
         height: 300px;
         width: 300px;
     }
-    .clock-face-inner{
+
+    .clock-face-inner {
         height: 267px;
         width: 267px;
         margin: 16px;
     }
-    .progress-bar{
+
+    .progress-bar {
         height: 248px;
         width: 248px;
-        margin: auto;        
+        margin: auto;
     }
-    .timer{
+
+    .timer {
         width: 230px;
         height: 230px;
-        
+
     }
-    #timer-digits{
+
+    #timer-digits {
         height: 80px;
         width: 187px;
         font-size: 80px;
@@ -396,61 +451,72 @@ input[type=number] {
         text-align: center;
         margin-top: 55px;
     }
-    .link{
+
+    .link {
         height: 14px;
         font-size: 14px;
         line-height: 17px;
         letter-spacing: 13.125px;
     }
-    .settings-page{
+
+    .settings-page {
         height: 70%;
         width: 327px;
         border-radius: 15px;
         top: 10%;
         left: 10%;
     }
-    .settings-header{
+
+    .settings-header {
         height: 10%;
     }
-    .settings-body{
+
+    .settings-body {
         margin-top: -20%;
     }
-    .settings-title{
+
+    .settings-title {
         height: 20px;
         width: 78px;
         font-size: 20px;
         font-weight: 700;
         line-height: 25px;
         letter-spacing: 0px;
-        text-align: left;    
+        text-align: left;
     }
-    .settings-mini-heading{
+
+    .settings-mini-heading {
         font-size: 11px;
         font-weight: 700;
         line-height: 14px;
         letter-spacing: 4px;
-        text-align: center;                        
+        text-align: center;
     }
-    .number-changer label{
+
+    .number-changer label {
         font-size: 12px;
         font-weight: 700;
         line-height: 15px;
         letter-spacing: 0px;
-        text-align: left; 
+        text-align: left;
     }
-    #settings-form{
+
+    #settings-form {
         height: 200px;
     }
-    .number-changer-container{
+
+    .number-changer-container {
         flex-direction: column;
     }
-    .number-changer{
+
+    .number-changer {
         flex-direction: row;
         width: 100%;
         align-items: center;
         height: 48px;
     }
-    .input-merge{
+
+    .input-merge {
         font-size: 12px;
         font-weight: 700;
         line-height: 15px;
@@ -460,22 +526,26 @@ input[type=number] {
         width: 140px;
         border-radius: 10px;
     }
-    .font-setting, .color-setting{
+
+    .font-setting, .color-setting {
         flex-direction: column;
         justify-content: space-evenly;
-        
+
     }
-    .font-selections, .colors{
+
+    .font-selections, .colors {
         height: 40px;
-        width: 152px;   
-        margin-bottom: 10px;     
+        width: 152px;
+        margin-bottom: 10px;
     }
-    #apply{
+
+    #apply {
         height: 53px;
         width: 140px;
         margin-bottom: -9%;
     }
-    div.dimmed{
+
+    div.dimmed {
         padding-bottom: 50%;
     }
 }
